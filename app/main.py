@@ -6,8 +6,8 @@ class Cargo:
 class BaseRobot:
     def __init__(self, name: str,
                  weight: float,
-                 coords: list = tuple) -> None:
-        if coords is tuple:
+                 coords: list = None) -> None:
+        if coords is None:
             coords = [0, 0]
         self.weight = weight
         self.name = name
@@ -34,8 +34,8 @@ class BaseRobot:
 
 
 class FlyingRobot(BaseRobot):
-    def __init__(self, name: str, weight: int, coords: list = tuple) -> None:
-        if coords is tuple:
+    def __init__(self, name: str, weight: int, coords: list = None) -> None:
+        if coords is None:
             coords = [0, 0, 0]
         super().__init__(name, weight, coords)
 
@@ -52,9 +52,9 @@ class DeliveryDrone(FlyingRobot):
     def __init__(self, name: str,
                  weight: int,
                  max_load_weight: int | float,
-                 coords: list = tuple,
+                 coords: list = None,
                  current_load: Cargo | None = None) -> None:
-        if coords is tuple:
+        if coords is None:
             coords = [0, 0, 0]
         super().__init__(name, weight, coords)
         self.max_load_weight = max_load_weight
